@@ -18,6 +18,8 @@
 */
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- KitKat UI Project: in-tree build metadata (Gradle injected this before) -->
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
 
     <permission
         android:name="com.android.launcher3.permission.PRELOAD_WORKSPACE"

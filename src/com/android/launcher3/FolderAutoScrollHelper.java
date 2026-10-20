@@ -16,7 +16,7 @@
 
 package com.android.launcher3;
 
-import android.support.v4.widget.AutoScrollHelper;
+import android.widget.AutoScrollHelper;
 import android.widget.ScrollView;
 
 /**
