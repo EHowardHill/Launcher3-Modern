@@ -13,8 +13,12 @@ android_app {
     // The protobuf-nano based backup helper is excluded (its generated code
     // came from the internal AOSP build); LauncherBackupAgentHelper is a
     // documented no-op without it.
-    exclude_srcs: ["src/com/android/launcher3/LauncherBackupHelper.java"],
+    exclude_srcs: [
+        "src/com/android/launcher3/LauncherBackupHelper.java",
+        "src/com/android/launcher3/FolderAutoScrollHelper.java",
+    ],
     resource_dirs: ["res"],
+    aaptflags: ["--auto-add-overlay"],
 
     platform_apis: true,
     min_sdk_version: "21",
@@ -33,4 +37,16 @@ android_app {
         "QuickSearchBox",
     ],
     required: ["privapp_whitelist_com.android.launcher3"],
+}
+
+// KitKat UI Project: Trebuchet used to provide the TAPL (Test Automation
+// Programming Library) module that platform_testing (flicker, launcher-helper)
+// links against. The KitKat launcher has no TAPL sources, but the module name
+// must exist for soong dependency resolution. The test consumers are not part
+// of the system image, so an empty library is sufficient.
+android_library {
+    name: "launcher-aosp-tapl",
+    srcs: [],
+    resource_dirs: [],
+    sdk_version: "current",
 }
